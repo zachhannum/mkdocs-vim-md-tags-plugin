@@ -1,8 +1,8 @@
-# mkdocs-tooltipster-links-plugin
+# mkdocs-vim-md-tags-plugin
 
-An MkDocs plugin that adds tooltips to preview the content of page links using tooltipster
+An MkDocs plugin that generates a vim tags file for autocompleting and navigating through markdown pages.
 
-![demo](demo/mkdocs_tooltipster_links_demo.gif)
+![demo](demo/mkdocs_vim_md_tags_demo.gif)
 
 ## Setup
 
@@ -10,67 +10,52 @@ An MkDocs plugin that adds tooltips to preview the content of page links using t
 
 Install the plugin using pip:
 
-`pip install mkdocs-tooltipster-links-plugin`
+`pip install mkdocs-vim-md-tags-plugin`
 
 Activate the plugin in `mkdocs.yml`:
 ```yaml
 plugins:
   - search
-  - tooltipster-links
+  - vim-md-tags
 ```
 
 > **Note:** If you have no `plugins` entry in your config file yet, you'll likely also want to add the `search` plugin. MkDocs enables it by default if there is no `plugins` entry set, but now you have to enable it explicitly.
 
 More information about plugins in the [MkDocs documentation][mkdocs-plugins].
 
-### Install Tooltipster
-
-Please reference [Tooltipster's getting started guide](http://iamceege.github.io/tooltipster/#getting-started) for additional installation instructions.
-
-Download Tooltipster and add the css and javascript to `mkdocs.yml`:
-
-```yml
-extra_css:
-  - css/tooltipster.bundle.min.css
-
-extra_javascript:
-  - js/tooltipster.bundle.js  
-```
-
-Create custom directory and `main.html` file for overriding the `extra_head` template block
-
+### Add tag file to vim
+Edit your vimrc file
 ```sh
-mkdir theme
-touch theme/main.html
+vim ~/.vimrc
 ```
 
-Add the following to `main.html`:
-```html
-{% extends "base.html" %}
-
-{% block extrahead %}
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script>
-                $(document).ready(function() {
-                    $('.link-tooltip').tooltipster();
-                });
-        </script>
-{% endblock %}
+Add this plugin's tags file to the list of tags
 ```
-Add the custom directory to `mkdocs.yml`:
-```yml
-theme:
-  name: mkdocs
-  custom_dir: theme
+set tags=./md_tags;/
 ```
+vim should now recursively load the tags file as long as it was started from somewhere in the MkDocs site structure from which it was generated.
 
-Add additonal css to the site (either in a new css file or existing one):
-```css
-.tooltip_templates { display: none; }
+### Getting YouCompleteMe autocomplete
+If you use YouCompleteMe, you can tell it to load the tags file to get autocompletion of the markdown file names by adding the following to your `~/.vimrc`
 ```
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_filetype_blacklist = {
+      \ 'tagbar': 1,
+      \ 'notes': 1,
+      \ 'netrw': 1,
+      \ 'unite': 1,
+      \ 'text': 1,
+      \ 'vimwiki': 1,
+      \ 'pandoc': 1,
+      \ 'infolog': 1,
+      \ 'leaderf': 1,
+      \ 'mail': 1
+      \}
+``` 
 
-## Usage
-Once configured property, tooltips-links should create tooltips automagically!
+## Config
+
+* `tag_file` - Sets the filename of the tags file to be generated
 
 ## See Also
 

@@ -10,7 +10,7 @@ from mkdocs.plugins import BasePlugin
 class VimMdTags(BasePlugin):
 
     config_scheme = (
-        ('tags_file', config_options.Type(mkdocs_utils.string_types, default='.md_tags')),
+        ('tags_file', config_options.Type(mkdocs_utils.string_types, default='md_tags')),
     )
 
     def __init__(self):
