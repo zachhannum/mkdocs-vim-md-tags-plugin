@@ -19,7 +19,9 @@ class VimMdTags(BasePlugin):
 
     def on_files(self, files, config):
         f = open(self.config['tags_file'], "w")
-        for file in files.documentation_pages():
-            filename = os.path.basename(file.src_path)
-            f.write(filename + "\t" + file.src_path + "\tlanguage:markdown\n")
+        md_pages = sorted(files.documentation_pages(), key=lambda page: os.path.basename(page.src_path))
+        for page in md_pages:
+            filename = os.path.basename(page.src_path)
+            f.write(os.path.splitext(filename)[0] + "\t" + page.abs_src_path + "\t1;\"language:markdown\n") 
+            f.write(filename + "\t" + page.abs_src_path + "\t1;\"language:markdown\n")
         f.close()
