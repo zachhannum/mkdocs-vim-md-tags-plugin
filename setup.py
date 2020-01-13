@@ -8,7 +8,7 @@ setup(
     long_description='An MkDocs plugin that creates a vim tag file of all markdown files',
     keywords='mkdocs',
     url='https://github.com/midnightprioriem/mkdocs-vim-md-tags-plugin',
-    download_url='https://github.com/midnightprioriem/mkdocs-vim-md-tags-links-plugin/archive/v_010.tar.gz',
+    download_url='https://github.com/midnightprioriem/mkdocs-vim-md-tags-plugin/archive/v_010.tar.gz',
     author='Zach Hannum',
     author_email='zacharyhannum@gmail.com',
     license='MIT',
