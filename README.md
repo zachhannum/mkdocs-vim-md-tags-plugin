@@ -10,8 +10,6 @@ This way of authoring pages allows for articles to be highly interconnected. The
 
 This plugin takes advantage of vim's build in tag system. type `:help tags` while in vim for more information on tags. For the purposes of this plugin, the two most imporant keybindings to remember are:
 
-## Keybindings
-
 `Ctrl+]` - This command jumps to the tag underneath the cursor.
 
 `Ctrl+t` - This command returns to the previous entry in the tag stack.
