@@ -16,7 +16,7 @@ This plugin takes advantage of vim's build in tag system. type `:help tags` whil
 
 `Ctrl+t` - This command returns to the previous entry in the tag stack.
 
-### Install the Plugin
+## Install the Plugin
 
 Install the plugin using pip:
 
@@ -33,7 +33,7 @@ plugins:
 
 More information about plugins in the [MkDocs documentation][mkdocs-plugins].
 
-### Add tag file to vim
+## Add tag file to vim
 Edit your vimrc file
 ```sh
 vim ~/.vimrc
@@ -45,7 +45,7 @@ set tags=./md_tags;/
 ```
 vim should now recursively load the tags file as long as it was started from somewhere in the MkDocs site structure from which it was generated.
 
-### Getting YouCompleteMe autocomplete
+## Getting YouCompleteMe autocomplete
 If you use YouCompleteMe, you can tell it to load the tags file to get autocompletion of the markdown file names by adding the following to your `~/.vimrc`
 ```
 let g:ycm_collect_identifiers_from_tags_files = 1
